@@ -1,0 +1,52 @@
+[
+  {
+    "question": "Which band released the album 'Definitely Maybe'?",
+    "options": ["Blur", "Oasis", "Pulp"],
+    "answer": "Oasis"
+  },
+  {
+    "question": "What is the name of Blur's iconic song that starts with 'Woo-hoo'?",
+    "options": ["Parklife", "Girls & Boys", "Song 2"],
+    "answer": "Song 2"
+  },
+  {
+    "question": "Which band wrote the song 'Common People'?",
+    "options": ["Suede", "Pulp", "Supergrass"],
+    "answer": "Pulp"
+  },
+  {
+    "question": "What year was Oasis' album '(What’s the Story) Morning Glory?' released?",
+    "options": [1995, 1997, 1993],
+    "answer": 1995
+  },
+  {
+    "question": "Which of these songs was created by Suede?",
+    "options": ["Animal Nitrate", "The Universal", "Champagne Supernova"],
+    "answer": "Animal Nitrate"
+  },
+  {
+    "question": "Who was the lead singer of Blur?",
+    "options": ["Noel Gallagher", "Damon Albarn", "Jarvis Cocker"],
+    "answer": "Damon Albarn"
+  },
+  {
+    "question": "Which Oasis song begins with the lyrics, 'Today is gonna be the day'?",
+    "options": ["Wonderwall", "Dont Look Back in Anger", "Live Forever"],
+    "answer": "Wonderwall"
+  },
+  {
+    "question": "Which of these bands released the album 'Modern Life Is Rubbish'?",
+    "options": ["Blur", "Pulp", "Suede"],
+    "answer": "Blur"
+  },
+  {
+    "question": "What is the title of Supergrass' debut album?",
+    "options": ["I Should Coco", "Different Class", "Be Here Now"],
+    "answer": "I Should Coco"
+  },
+  {
+    "question": "Which Britpop band was fronted by Brett Anderson?",
+    "options": ["Blur", "Suede", "Oasis"],
+    "answer": "Suede"
+  }
+]
