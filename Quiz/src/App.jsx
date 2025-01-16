@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import GameMode from './components/Gamemode'
 
 function App() {
   
@@ -9,16 +10,16 @@ function App() {
   return (
     <>
       <div>
-      hej hej
-
-      <h1>Quiz</h1>
-
-      
-   
+        
+        <h1>Quiz</h1>
+        <GameMode />
+       
       </div>
-      
     </>
-  )
+  );
 }
 
 export default App
+
+
+

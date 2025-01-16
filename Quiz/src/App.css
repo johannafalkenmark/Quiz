@@ -54,4 +54,34 @@ h1 {
 }
 
 
+.play-text {
+  color: var(--brown);
+  font-weight: 600;
+  font-size: 240px;
 
+  &:hover {
+      color: var(--pink);
+  font-size: 360px;
+    }
+}
+.question {
+  color: var(--brown);
+  font-family: "Poppins";
+  font-weight: normal;
+  font-weight: 400;
+font-size: 24px;
+}
+
+.optionslist {
+  list-style: none;
+
+    margin-bottom: 2px;
+    color: var(--greenlight) ;
+    font-family: "Poppins";
+    text-decoration: none;
+    font-weight: 400;
+
+    &:hover {
+      color: var(--pink);
+  }
+}
