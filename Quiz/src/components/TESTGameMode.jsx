@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-
+//TEST variant:
 function GameMode() {
   const [questions, setQuestions] = useState([]);
   const [error, setError] = useState(null);
-  //Ev lägg till error variabel (som visar om något går fel vid hämtning)
+ 
 
   useEffect(() => {
     fetch("/Questions.json")
@@ -28,7 +28,7 @@ function GameMode() {
 
   return (
     <div>
-      <div className="play-text">Lets play!</div>
+      
       {questions.map((question, index) => (
         <div key={index}>
           <div className="question">{question.question}</div>
