@@ -7,6 +7,8 @@ import Game from "./components/Game";
 import CookieConsent from "react-cookie-consent";
 
 function App() {
+
+ 
   return (
     <>
       <div>
@@ -15,6 +17,7 @@ function App() {
         <h1>Quiz</h1>
        
         <Game />
+    
       </div>
     </>
   );
