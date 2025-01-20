@@ -27,7 +27,7 @@
   --standard-size: 8px;
   --box-shadow: rgb(, 196, 196);
   --standard-font: "Montserrat", sans-serif;
-  --standard-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+  --standard-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -52,11 +52,11 @@ h1 {
 .play-text {
   color: var(--brown);
   font-weight: 600;
-  font-size: 160px;
+  font-size: 80px;
 
   &:hover {
-    color: var(--pink);
-    font-size: 180px;
+    color: var(--beige);
+    font-size: 100px;
   }
 }
 .question {
@@ -64,29 +64,86 @@ h1 {
   font-family: "Pacifico";
   font-weight: normal;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 36px;
 }
 
 .optionslist {
   list-style: none;
-
+  font-size: 24px;
   margin-bottom: 2px;
   color: var(--greenlight);
   font-family: "Poppins";
   text-decoration: none;
   font-weight: 400;
 
- 
 }
 
 .option {
  &:hover {
     color: var(--beige);
   }
+
 }
 
+.option-button
+{
+    background-color:#91785d;
+  box-shadow: var(--standard-shadow);
+  text-decoration: none;
+  font-family: "Poppins";
+  border-radius: 18px;
+  width: 500px;
+  padding: 12px;
+  border: 4px;
+
+  font-size: 18px;
+  color: rgb(33, 33, 33);
+  margin-top: 40px;
+  margin-bottom: 8px;
+  
+
+  &:hover {
+    background-color:#bbe1c3;
+    color: var(--brown);
+  }
+  &:active {
+    background-color: transparent;
+    color: white;
+  }
+}
+
+.next-button {
+  font-family: "Poppins";
+  background-color:var(--greenlight);
+ box-shadow: var(--standard-shadow);
+  text-decoration: none;
+  border-radius: 30px;
+  width: 100px;
+  padding: 8px;
+  border: 4px;
+
+  font-size: 18px;
+  color: rgb(33, 33, 33);
+  font-weight: 500;
+  margin-top: 40px;
+
+  &:hover {
+    background-color:#bbe1c3;
+    color: var(--brown);
+  }
+  &:active {
+    background-color: transparent;
+    color: white;
+  }
+}
+
+
 .hurry {
-  color: red; 
+  color: var(--pink); 
   font-size: 240px;
-  font-family: ;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.score-status {
+  
 }

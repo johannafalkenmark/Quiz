@@ -17,20 +17,20 @@ const Game = () => {
   const [timeLeft, setTimeLeft] = useState(10);
 
   //TIMER
-  useEffect(() => {
-    //om timeleft är mindre än 0 kalla på funktionen setquestionindex-med arg frågeindex+1.
-    //sätt sedan tillbaka
-    if (timeLeft === 0) {
-      setQuestionIndex(questionIndex + 1);
-      setTimeLeft(10);
-    }
+//   useEffect(() => {
+//     //om timeleft är mindre än 0 kalla på funktionen setquestionindex-med arg frågeindex+1.
+//     //sätt sedan tillbaka
+//     if (timeLeft === 0) {
+//       setQuestionIndex(questionIndex + 1);
+//       setTimeLeft(10);
+//     }
 
-    if (timeLeft > 0) {
-      setTimeout(() => {
-        setTimeLeft(timeLeft - 1);
-      }, 1000);
-    }
-  }, [timeLeft]);
+//     if (timeLeft > 0) {
+//       setTimeout(() => {
+//         setTimeLeft(timeLeft - 1);
+//       }, 1000);
+//     }
+//   }, [timeLeft]);
 
   
 
@@ -68,49 +68,56 @@ const Game = () => {
     return <div>Your score is {score}</div>;
   }
 
+const checkAnswer = () => {
+if (currentItem.options === currentItem.answer) {
+  setScore(+1);
+  return <div>Rätt svar du får +1 poäng {score} </div>;
+}
+if (currentItem.options !== currentItem.answer) {
+   
+      setQuestionIndex(questionIndex + 1);
+      setScore(-5);
+       return <div>Fel svar! {score -1}</div>;
+}
+}
+
   return (
     <>
       <div className="play-text">Lets play!</div>
 
-      <h2>Questions</h2>
+      
       <div className="question">{currentItem.question}</div>
 
       <ul className="optionslist">
         {currentItem.options.map((option, index) => (
           <li className="option" key={index}>
-            {option}
+            <button className="option-button"
+            onClick={() => {
+        checkAnswer();
+
+            }}> {option} </button>
           </li>
         ))}
       </ul>
 
       {/* Om tiden är mindre än fyra sätts klassnamnet hurry annars time */}
       <h3 className={timeLeft < 4 ? "hurry" : "time"}>{timeLeft}</h3>
+      <div className="score-status">SCORE: {score}</div>
 
-      <button
+      <button className="next-button"
         onClick={() => {
           setTimeLeft(10);
           setQuestionIndex(questionIndex + 1);
         }}
       >
-        NEXT
+        Next
       </button>
     </>
   );
 };
 
-//Testat börja sätta upp från lektion
-const ShowQuestion = () => {
-  return <></>;
-};
 
 export default Game;
 
-//index & key då jag ej har id på frågorna. använd map för att mappa ut dem. och ev filter.
-//exempel på lektion skriva ut array en och en
-// function ShowList(props) {
-//     const listItems = props.myArray.map((text) => {
-//         return <ul> {text}</ul>
-//     })
-// }
 
 //rafce är kortkommande
