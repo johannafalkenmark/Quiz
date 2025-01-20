@@ -17,7 +17,7 @@
   --beige: rgb(221, 187, 166);
 
   --pink: #e5c1bd;
-
+--brigt-pink: #A54657; 
   --white: rgb(236, 226, 208);
   --green: #869d7a;
 
@@ -112,6 +112,13 @@ h1 {
   }
 }
 
+
+.feedback {
+  margin-top: 24px;
+  font-family: "Poppins";
+  font-size: 28px;
+}
+
 .next-button {
   font-family: "Poppins";
   background-color:var(--greenlight);
@@ -137,13 +144,59 @@ h1 {
   }
 }
 
-
+.time {
+  font-size: 24px;
+  font-family:"Poppins";
+  font-weight: 400;
+    margin-top: 24px;
+}
 .hurry {
-  color: var(--pink); 
+  color: var(--bright-pink); 
   font-size: 240px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family:"Poppins";
+    margin-top: 24px;
 }
 
 .score-status {
-  
+   margin-top: 24px;
+    font-family: "Poppins";
+  font-size: 18px;
+  color: rgb(33, 33, 33);
+  font-weight: 500px;
+}
+
+.score-status-low {
+  font-family: "Poppins";
+  color: var(--brigt-pink);
+  font-size: 36px;
+}
+.score-status-high {
+  font-family: "Poppins";
+   color: rgb(85, 221, 117);
+  font-size: 36px;
+}
+
+.final-text {
+  font-size: 48px;
+  color: #91785d;
+font-family: "Pacifico";
+}
+.final-score {
+  font-size: 48px;
+  color: #91785d;
+}
+.final-score-number {
+  font-size: 48px;
+  color: #a7cdbd;
+  font-family: "Poppins";
+  border-color: #91785d;
+  border-style: dotted;
+  border-radius: 50px;
+  border-width: 20px;
+  margin-top: 24px;
+  padding: 20px;
+text-align: center;
+
+line-height: 48px;
+
 }
