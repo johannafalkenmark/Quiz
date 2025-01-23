@@ -27,40 +27,21 @@ const Game = () => {
   
 
   //TIMER
-  useEffect(() => {
-    //om timeleft är mindre än 0 kalla på funktionen setquestionindex-med arg frågeindex+1:
-   if (timeLeft === 0) {
-      setQuestionIndex(questionIndex + 1);
-     setTimeLeft(10);
-    }
+//   useEffect(() => {
+//     //om timeleft är mindre än 0 kalla på funktionen setquestionindex-med arg frågeindex+1:
+//    if (timeLeft === 0) {
+//       setQuestionIndex(questionIndex + 1);
+//      setTimeLeft(10);
+//     }
 
-        if (timeLeft > 0) {
-          setTimeout(() => {
-            setTimeLeft(timeLeft - 1);
-         }, 1000);
-    }
-   }, [timeLeft]);
+//         if (timeLeft > 0) {
+//           setTimeout(() => {
+//             setTimeLeft(timeLeft - 1);
+//          }, 1000);
+//     }
+//    }, [timeLeft]);
 
-   //TIMER för nästa fråga
-   //KALLA PÅ DENNA NÅGONSTANS? ELLER KÖRS DEN AUTOMATISKT
-useEffect(() => {
-    if (timeLeftNextQuestion === 0) {
-      setQuestionIndex(questionIndex + 1);
-      setTimeLeft(10);
-      setFeedback("");
-    }
-
-    if (selectedAnswer !== "") { //Här sätt in if sleected answer ej är tom
-setTimeout(() => {
-    setTimeLeftNextQuestion(timeLeftNextQuestion - 1);
-}, 1000);
-    }
-
-}, [timeLeftNextQuestion])
-
-
-
-
+   
   //HÄMTA FRÅGORNA FRÅN FIL VIA FETCH:
   const getQuestions = () => {
     fetch("Questions.json")
@@ -125,17 +106,24 @@ setTimeout(() => {
     if (selectedOption === currentItem.answer) {
       setScore(score + 1);
       setFeedback("Correct!");
-      
+      setTimeLeftNextQuestion(4);
+     
+
     } else {
       setScore(score - 1);
       setFeedback("Sorry - not the right answer.");
      
     }
-    //Skickar vidare till nästa fråga+timer sätts
+    //Skickar vidare efter 2,5sek till nästa fråga+timer sätts
+
+   setTimeout(() => {
+    setFeedback("");
+    setSelectedAnswer("");
     setTimeLeft(10);
-   setQuestionIndex(questionIndex + 1);
-    //gör feedbacken tom till nästa gång:  HUR GÖR JAG ATT DETTA DRÖJER OCH INTE RADERAS DIREKT
-    //setFeedback("");
+    setQuestionIndex(questionIndex + 1);
+   }, 2500);
+   
+   
   };
 
   //Beroende på om val är gjort får button olika klassnamn(för att kunna göra effekter röd/grön m.m.)
@@ -168,6 +156,7 @@ setTimeout(() => {
               disabled={selectedAnswer !== ""}
               className={getButtonClassName(option)}
               onClick={() => {
+                //här blir option selectedanswer
                 setSelectedAnswer(option);
                 //här blir  option selectedoption:
                 checkAnswer(option);
@@ -203,6 +192,7 @@ setTimeout(() => {
           setSelectedAnswer("");
           setTimeLeft(10);
           setQuestionIndex(questionIndex + 1);
+          setFeedback("");
         }}
       >
         Next

@@ -126,6 +126,12 @@ h1 {
   }
 }
 
+
+.timeleft-nextquestion {
+  color: orange;
+
+}
+
 .feedback {
   margin-top: 24px;
   font-family: "Poppins";
@@ -197,11 +203,24 @@ opacity: 0.5;
   font-size: 18px;
   color: rgb(33, 33, 33);
   font-weight: 500px;
+  border-color: #91785d;
+  border-style: dotted;
+  border-radius: 50px;
+   border-width: 20px;
+   box-sizing: border-box;
+   height: 20px;
 }
 
 .score-status-low {
-  font-family: "Poppins";
-  color: var(--brigt-pink);
+    border-color: #91785d;
+  border-style: dotted;
+  border-radius: 50%;
+   border-width: 20px;
+   box-sizing: border-box;
+   height: 200px;
+   width: 200px;
+   margin-left: auto; 
+   margin-right: auto;
   
 }
 .score-status-high {
@@ -225,18 +244,26 @@ opacity: 0.5;
   font-family: "Poppins";
   border-color: #91785d;
   border-style: dotted;
-  border-radius: 50px;
+  
   border-width: 20px;
   margin-top: 24px;
   padding: 20px;
+  padding-top: 50px;
   text-align: center;
   line-height: 48px;
+  border-radius: 50%;
+   box-sizing: border-box;
+   height: 200px;
+   width: 200px;
+   margin-left: auto; 
+   margin-right: auto;
 }
 
 .cake-svg {
   fill: var(--brown);
   height: 240px;
   width: 240px;
+  
 
   &:hover {
     fill: #a54657;
@@ -256,6 +283,9 @@ opacity: 0.5;
   color: rgb(33, 33, 33);
   font-weight: 500;
   margin-top: 40px;
+    margin-left: 0 auto; 
+   margin-right: 0 auto;
+   display: flex;
 
   &:hover {
     background-color: var(--beige);
