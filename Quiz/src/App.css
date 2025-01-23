@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
- 
 
 #root {
   max-width: 1280px;
@@ -17,7 +16,7 @@
   --beige: rgb(221, 187, 166);
 
   --pink: #e5c1bd;
---brigt-pink: #A54657; 
+  --brigt-pink: #a54657;
   --white: rgb(236, 226, 208);
   --green: #869d7a;
 
@@ -56,7 +55,6 @@ h1 {
 
   &:hover {
     color: var(--beige);
-    font-size: 100px;
   }
 }
 .question {
@@ -75,19 +73,16 @@ h1 {
   font-family: "Poppins";
   text-decoration: none;
   font-weight: 400;
-
 }
 
 .option {
- &:hover {
+  &:hover {
     color: var(--beige);
   }
-
 }
 
-.option-button
-{
-    background-color:#91785d;
+.option-button {
+  background-color: #91785d;
   box-shadow: var(--standard-shadow);
   text-decoration: none;
   font-family: "Poppins";
@@ -95,15 +90,13 @@ h1 {
   width: 500px;
   padding: 12px;
   border: 4px;
-
   font-size: 18px;
   color: rgb(33, 33, 33);
   margin-top: 40px;
   margin-bottom: 8px;
-  
 
   &:hover {
-    background-color:#bbe1c3;
+    background-color: #bbe1c3;
     color: var(--brown);
   }
   &:active {
@@ -112,6 +105,26 @@ h1 {
   }
 }
 
+.correct-answer {
+  background-color: green;
+  border: var(--greenlight);
+  border-style: dotted;
+  border-radius: 50px;
+  
+  &:hover {
+    background-color: green;
+    color: rgb(33, 33, 33);
+
+  }
+}
+
+.wrong-answer {
+  background-color: red;
+  &:hover {
+    background-color: red;
+    color: rgb(33, 33, 33);
+  }
+}
 
 .feedback {
   margin-top: 24px;
@@ -121,45 +134,66 @@ h1 {
 
 .next-button {
   font-family: "Poppins";
-  background-color:var(--greenlight);
- box-shadow: var(--standard-shadow);
+  background-color: var(--brown);
+  box-shadow: var(--standard-shadow);
   text-decoration: none;
   border-radius: 30px;
-  width: 100px;
+  width: 140px;
   padding: 8px;
   border: 4px;
 
   font-size: 18px;
   color: rgb(33, 33, 33);
   font-weight: 500;
-  margin-top: 40px;
+  margin-top: 20px;
 
   &:hover {
-    background-color:#bbe1c3;
+    background-color: #bbe1c3;
     color: var(--brown);
   }
   &:active {
     background-color: transparent;
     color: white;
   }
+
 }
+
+.next-button-disabled {
+
+opacity: 0.5;
+
+
+&:hover {
+  background-color: var(--brown);
+  color: inherit;
+  cursor: not-allowed;
+  }
+  &:active {
+ background-color: inherit;
+  color: inherit;
+  cursor: not-allowed;
+  }
+
+
+}
+
 
 .time {
   font-size: 24px;
-  font-family:"Poppins";
+  font-family: "Poppins";
   font-weight: 400;
-    margin-top: 24px;
+  margin-top: 24px;
 }
 .hurry {
-  color: var(--bright-pink); 
-  font-size: 240px;
-  font-family:"Poppins";
-    margin-top: 24px;
+  color: var(--bright-pink);
+  font-size: 24px;
+  font-family: "Poppins";
+  margin-top: 24px;
 }
 
 .score-status {
-   margin-top: 24px;
-    font-family: "Poppins";
+  margin-top: 24px;
+  font-family: "Poppins";
   font-size: 18px;
   color: rgb(33, 33, 33);
   font-weight: 500px;
@@ -168,18 +202,18 @@ h1 {
 .score-status-low {
   font-family: "Poppins";
   color: var(--brigt-pink);
-  font-size: 36px;
+  
 }
 .score-status-high {
   font-family: "Poppins";
-   color: rgb(85, 221, 117);
-  font-size: 36px;
+  color: rgb(85, 221, 117);
+  
 }
 
 .final-text {
   font-size: 48px;
   color: #91785d;
-font-family: "Pacifico";
+  font-family: "Pacifico";
 }
 .final-score {
   font-size: 48px;
@@ -195,8 +229,40 @@ font-family: "Pacifico";
   border-width: 20px;
   margin-top: 24px;
   padding: 20px;
-text-align: center;
+  text-align: center;
+  line-height: 48px;
+}
 
-line-height: 48px;
+.cake-svg {
+  fill: var(--brown);
+  height: 240px;
+  width: 240px;
 
+  &:hover {
+    fill: #a54657;
+  }
+}
+
+.play-again-button {
+ 
+  background-color: var(--blue);
+  box-shadow: var(--standard-shadow);
+  text-decoration: none;
+  border-radius: 30px;
+  width: 100px;
+  padding: 8px;
+  border: 4px;
+  font-size: 18px;
+  color: rgb(33, 33, 33);
+  font-weight: 500;
+  margin-top: 40px;
+
+  &:hover {
+    background-color: var(--beige);
+    color: var(--brown);
+  }
+  &:active {
+    background-color: transparent;
+    color: white;
+  }
 }
