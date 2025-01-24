@@ -195,38 +195,33 @@ opacity: 0.5;
   font-size: 24px;
   font-family: "Poppins";
   margin-top: 24px;
+  font-weight: 800;
 }
 
 .score-status {
   margin-top: 24px;
   font-family: "Poppins";
-  font-size: 18px;
-  color: rgb(33, 33, 33);
+  font-size: 36px;
+  color: var(--greenlight);
   font-weight: 500px;
-  border-color: #91785d;
-  border-style: dotted;
-  border-radius: 50px;
-   border-width: 20px;
-   box-sizing: border-box;
-   height: 20px;
+  
 }
 
 .score-status-low {
-    border-color: #91785d;
-  border-style: dotted;
-  border-radius: 50%;
-   border-width: 20px;
-   box-sizing: border-box;
-   height: 200px;
-   width: 200px;
-   margin-left: auto; 
-   margin-right: auto;
+    
+   color: var(--pink);
+  margin-top: 24px;
+  font-family: "Poppins";
+  font-size: 36px;
+  font-weight: 500px;
   
 }
 .score-status-high {
+  margin-top: 24px;
   font-family: "Poppins";
-  color: rgb(85, 221, 117);
-  
+  font-size: 36px;
+  color: var(--greenlight);
+  font-weight: 500px;
 }
 
 .final-text {
