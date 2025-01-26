@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
+
 // const [namnPåVariabel, denEndaFunktionSomKanÄndrapåVariabel ] = useState(  initialaVärdetPåVariabeln  )
+
 // useEffect( funktionSomKörs, listaAttLyssnaEfterSomInnehållerVärdenSomKanÄndras   );
+
+/*
+
+1. Visa inte next innan personen har svarat (check)
+2. När personen har svarat så pausas timern eller sätts till 0 (check)
+3. Man måste själv gå vidare till nästa fråga. (check)
+4. Om man inte hinner svara så skjuter vi mot rättningsfunktionen men slungar inte vidare till nästa fråga.
+*/
+
+const timePerQuestion = 10;
 
 const Game = () => {
   //State för att hämta frågor och svar. Börjar som tom array.
@@ -16,32 +28,35 @@ const Game = () => {
   const [feedback, setFeedback] = useState("");
 
   //State för timer. Börjar på 10(sek).
-  const [timeLeft, setTimeLeft] = useState(10);
+  const [timeLeft, setTimeLeft] = useState(timePerQuestion);
 
-  //State för timer som körs när man svarat på fråga
-  const [timeLeftNextQuestion, setTimeLeftNextQuestion] = useState(4);
-
-//State för att visa när en fråga är/inte är besvarad.
+  //State för att visa när en fråga är/inte är besvarad.
   const [selectedAnswer, setSelectedAnswer] = useState("");
 
-  
+  const [timeoutId, setTimeoutId] = useState(0);
 
   //TIMER
-//   useEffect(() => {
-//     //om timeleft är mindre än 0 kalla på funktionen setquestionindex-med arg frågeindex+1:
-//    if (timeLeft === 0) {
-//       setQuestionIndex(questionIndex + 1);
-//      setTimeLeft(10);
-//     }
+  useEffect(() => {
+    //om timeleft är mindre än 0 kalla på funktionen setquestionindex-med arg frågeindex+1:
+    if (timeLeft === 0) {
+      clearTimeout(timeoutId);
+      checkAnswer(null);
+    }
 
-//         if (timeLeft > 0) {
-//           setTimeout(() => {
-//             setTimeLeft(timeLeft - 1);
-//          }, 1000);
-//     }
-//    }, [timeLeft]);
+    if (timeLeft > 0) {
+      const myTimeoutId = setTimeout(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+      setTimeoutId(myTimeoutId);
+    }
+  }, [timeLeft]);
 
-   
+  //    useEffect(() => {
+
+  // if
+
+  //    })
+
   //HÄMTA FRÅGORNA FRÅN FIL VIA FETCH:
   const getQuestions = () => {
     fetch("Questions.json")
@@ -78,52 +93,55 @@ const Game = () => {
         <div className="final-score">
           Your final score is <p className="final-score-number">{score}</p>
         </div>
-        <svg
-          className="cake-svg"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 -960 960 960"
-        >
-          <path d="M160-80q-17 0-28.5-11.5T120-120v-200q0-33 23.5-56.5T200-400v-160q0-33 23.5-56.5T280-640h160v-58q-18-12-29-29t-11-41q0-15 6-29.5t18-26.5l56-56 56 56q12 12 18 26.5t6 29.5q0 24-11 41t-29 29v58h160q33 0 56.5 23.5T760-560v160q33 0 56.5 23.5T840-320v200q0 17-11.5 28.5T800-80H160Zm120-320h400v-160H280v160Zm-80 240h560v-160H200v160Zm80-240h400-400Zm-80 240h560-560Zm560-240H200h560Z" />
-        </svg>
-        <button
-          className="play-again-button"
-          //Återställer värden om man vill spela om:
-          onClick={() => {
-            setTimeLeft(10);
-            setQuestionIndex(0);
-            setScore(0);
-            setFeedback("");
-          }}
-        >
-          Play again
-        </button>
+        <div className="cake-div">
+          <svg
+            className="cake-svg"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 -960 960 960"
+          >
+            <path d="M160-80q-17 0-28.5-11.5T120-120v-200q0-33 23.5-56.5T200-400v-160q0-33 23.5-56.5T280-640h160v-58q-18-12-29-29t-11-41q0-15 6-29.5t18-26.5l56-56 56 56q12 12 18 26.5t6 29.5q0 24-11 41t-29 29v58h160q33 0 56.5 23.5T760-560v160q33 0 56.5 23.5T840-320v200q0 17-11.5 28.5T800-80H160Zm120-320h400v-160H280v160Zm-80 240h560v-160H200v160Zm80-240h400-400Zm-80 240h560-560Zm560-240H200h560Z" />
+          </svg>
+        </div>
+        <div className="play-again-button-div">
+          <button
+            className="play-again-button"
+            //Återställer värden om man vill spela om:
+            onClick={() => {
+              setTimeLeft(timePerQuestion);
+              setQuestionIndex(0);
+              setScore(0);
+              setFeedback("");
+            }}
+          >
+            Play again
+          </button>
+        </div>
       </div>
     );
   }
 
+  const goToNextQuestion = () => {
+    setSelectedAnswer("");
+    setFeedback("");
+    setTimeLeft(timePerQuestion);
+    setQuestionIndex(questionIndex + 1);
+  };
+
   //Stämmer av svaret:
   const checkAnswer = (selectedOption) => {
+    clearTimeout(timeoutId);
+
     if (selectedOption === currentItem.answer) {
       setScore(score + 1);
       setFeedback("Correct 😀");
-      setTimeLeftNextQuestion(4);
-     
-
+      //EV TA BORT DENNA setTimeLeftNextQuestion(4);
+    } else if (selectedOption === null) {
+      setFeedback("Time is up");
+      setSelectedAnswer("WRONG ANSWER");
     } else {
       setScore(score - 1);
       setFeedback("Sorry - not the right answer. 😓");
-     
     }
-    //Skickar vidare efter 2,5sek till nästa fråga+timer sätts
-
-   setTimeout(() => {
-    setFeedback("");
-    setSelectedAnswer("");
-    setTimeLeft(10);
-    setQuestionIndex(questionIndex + 1);
-   }, 2500);
-   
-   
   };
 
   //Beroende på om val är gjort får button olika klassnamn(för att kunna göra effekter röd/grön m.m.)
@@ -144,8 +162,6 @@ const Game = () => {
 
   return (
     <>
-
-    
       <div className="play-text">Lets play!</div>
 
       <div className="question">{currentItem.question}</div>
@@ -181,20 +197,17 @@ const Game = () => {
             : "score-status-high"
         }
       >
-         {score} p
+        {score} p
       </div>
       {/* Om tiden är mindre än fyra sätts klassnamnet hurry annars time-fallbackvärde */}
       <h3 className={timeLeft < 4 ? "hurry" : "time"}>{timeLeft}</h3>
       <button //Kan ej gå vidare utan angett svar. Eget klassnamn om val ej är gjort för effekt på knappen.
         className={`next-button ${
-          selectedAnswer === "" ? "next-button-disabled" : ""
+          selectedAnswer === "" ? "next-button-hidden" : ""
         } `}
         disabled={selectedAnswer === ""}
         onClick={() => {
-          setSelectedAnswer("");
-          setTimeLeft(10);
-          setQuestionIndex(questionIndex + 1);
-          setFeedback("");
+          goToNextQuestion();
         }}
       >
         Next

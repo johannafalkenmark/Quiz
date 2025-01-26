@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Game from "./components/Game";
 import CookieConsent from "react-cookie-consent";
+import Footer from "./components/Footer";
 
 function App() {
 
@@ -16,8 +17,8 @@ function App() {
         <h1>Quiz</h1>
 
         <Game />
+        <Footer />
       </div>
-      
     </>
   );
 }
