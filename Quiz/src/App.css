@@ -23,12 +23,25 @@
   --greenlight: #bbe1c3;
   --blue: #a7cdbd;
   --brown: #91785d;
+
+  --rightanswer: #A0AF84;
+  --wronganswer: #FF7477; 
+
+
   --standard-size: 8px;
   --box-shadow: rgb(, 196, 196);
   --standard-font: "Montserrat", sans-serif;
   --standard-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+
+.background-image
+{
+  background-image: 
+
+}
+
 
 body {
   background-color: var(--green);
@@ -62,7 +75,7 @@ h1 {
   font-family: "Pacifico";
   font-weight: normal;
   font-weight: 400;
-  font-size: 36px;
+  font-size: 64px;
 }
 
 .optionslist {
@@ -106,22 +119,22 @@ h1 {
 }
 
 .correct-answer {
-  background-color: green;
+  background-color: #95BF74;
   border: var(--greenlight);
   border-style: dotted;
   border-radius: 50px;
   
   &:hover {
-    background-color: green;
+    background-color:  #95BF74;
     color: rgb(33, 33, 33);
 
   }
 }
 
 .wrong-answer {
-  background-color: red;
+  background-color: #a54657;
   &:hover {
-    background-color: red;
+    background-color: #a54657;
     color: rgb(33, 33, 33);
   }
 }
@@ -185,47 +198,42 @@ opacity: 0.5;
 
 
 .time {
+ color: #91785d;
   font-size: 24px;
   font-family: "Poppins";
   font-weight: 400;
-  margin-top: 24px;
+  margin-top: 56px;
 }
 .hurry {
   color: var(--bright-pink);
   font-size: 24px;
   font-family: "Poppins";
-  margin-top: 24px;
+  margin-top: 56px;
 }
 
 .score-status {
   margin-top: 24px;
   font-family: "Poppins";
-  font-size: 18px;
-  color: rgb(33, 33, 33);
+  font-size: 36px;
+  color: var(--greenlight);
   font-weight: 500px;
-  border-color: #91785d;
-  border-style: dotted;
-  border-radius: 50px;
-   border-width: 20px;
-   box-sizing: border-box;
+  
    height: 20px;
 }
 
 .score-status-low {
-    border-color: #91785d;
-  border-style: dotted;
-  border-radius: 50%;
-   border-width: 20px;
-   box-sizing: border-box;
-   height: 200px;
-   width: 200px;
-   margin-left: auto; 
-   margin-right: auto;
+   margin-top: 24px;
+   font-family: "Poppins";
+  font-size: 36px;
+   color: #a54657;
+   
   
 }
 .score-status-high {
+  margin-top: 24px;
   font-family: "Poppins";
-  color: rgb(85, 221, 117);
+  font-size: 36px;
+  color: var(--greenlight);
   
 }
 
@@ -283,9 +291,7 @@ opacity: 0.5;
   color: rgb(33, 33, 33);
   font-weight: 500;
   margin-top: 40px;
-    margin-left: 0 auto; 
-   margin-right: 0 auto;
-   display: flex;
+  
 
   &:hover {
     background-color: var(--beige);
