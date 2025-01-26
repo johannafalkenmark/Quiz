@@ -14,10 +14,10 @@ function App() {
         <CookieConsent buttonText="OKEY">Accept cookies</CookieConsent>
 
         <h1>Quiz</h1>
-       
+
         <Game />
-    
       </div>
+      
     </>
   );
 }

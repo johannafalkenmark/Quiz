@@ -105,13 +105,13 @@ const Game = () => {
   const checkAnswer = (selectedOption) => {
     if (selectedOption === currentItem.answer) {
       setScore(score + 1);
-      setFeedback("Correct!");
+      setFeedback("Correct 😀");
       setTimeLeftNextQuestion(4);
      
 
     } else {
       setScore(score - 1);
-      setFeedback("Sorry - not the right answer.");
+      setFeedback("Sorry - not the right answer. 😓");
      
     }
     //Skickar vidare efter 2,5sek till nästa fråga+timer sätts
@@ -144,6 +144,8 @@ const Game = () => {
 
   return (
     <>
+
+    
       <div className="play-text">Lets play!</div>
 
       <div className="question">{currentItem.question}</div>
@@ -179,7 +181,7 @@ const Game = () => {
             : "score-status-high"
         }
       >
-        Score: {score}
+         {score} p
       </div>
       {/* Om tiden är mindre än fyra sätts klassnamnet hurry annars time-fallbackvärde */}
       <h3 className={timeLeft < 4 ? "hurry" : "time"}>{timeLeft}</h3>
