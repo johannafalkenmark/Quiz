@@ -24,9 +24,8 @@
   --blue: #a7cdbd;
   --brown: #91785d;
 
-  --rightanswer: #A0AF84;
-  --wronganswer: #FF7477; 
-
+  --rightanswer: #a0af84;
+  --wronganswer: #ff7477;
 
   --standard-size: 8px;
   --box-shadow: rgb(, 196, 196);
@@ -35,13 +34,9 @@
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-
-.background-image
-{
-  background-image: 
-
+.background-image {
+  /* background-image: ; */
 }
-
 
 body {
   background-color: var(--green);
@@ -62,20 +57,23 @@ h1 {
 }
 
 .play-text {
+  margin-top: 12px;
   color: var(--brown);
   font-weight: 600;
-  font-size: 80px;
+  font-size: 60px;
 
   &:hover {
     color: var(--beige);
   }
 }
 .question {
+  margin-top: 20px;
   color: var(--brown);
   font-family: "Pacifico";
   font-weight: normal;
   font-weight: 400;
-  font-size: 64px;
+  font-size: 48px;
+  height: 160px;
 }
 
 .optionslist {
@@ -86,11 +84,12 @@ h1 {
   font-family: "Poppins";
   text-decoration: none;
   font-weight: 400;
+  height: 340px;
 }
 
 .option {
   &:hover {
-    color: var(--beige);
+    color: var(--pink);
   }
 }
 
@@ -119,19 +118,19 @@ h1 {
 }
 
 .correct-answer {
-  background-color: #95BF74;
+  background-color: #95bf74;
   border: var(--greenlight);
   border-style: dotted;
   border-radius: 50px;
   
   &:hover {
-    background-color:  #95BF74;
+    background-color: #95bf74;
     color: rgb(33, 33, 33);
-
   }
 }
 
 .wrong-answer {
+  opacity: 0.5;
   background-color: #a54657;
   &:hover {
     background-color: #a54657;
@@ -140,15 +139,33 @@ h1 {
 }
 
 
-.timeleft-nextquestion {
-  color: orange;
-
-}
-
 .feedback {
   margin-top: 24px;
   font-family: "Poppins";
   font-size: 28px;
+}
+
+.score-status {
+  margin-top: 24px;
+  font-family: "Poppins";
+  font-size: 36px;
+  color: var(--greenlight);
+  font-weight: 500px;
+
+  height: 20px;
+}
+
+.score-status-low {
+  margin-top: 24px;
+  font-family: "Poppins";
+  font-size: 36px;
+  color: #a54657;
+}
+.score-status-high {
+  margin-top: 24px;
+  font-family: "Poppins";
+  font-size: 36px;
+  color: var(--greenlight);
 }
 
 .next-button {
@@ -174,85 +191,61 @@ h1 {
     background-color: transparent;
     color: white;
   }
-
 }
 
-.next-button-disabled {
-
-opacity: 0.5;
-
-
-&:hover {
-  background-color: var(--brown);
-  color: inherit;
-  cursor: not-allowed;
-  }
-  &:active {
- background-color: inherit;
-  color: inherit;
-  cursor: not-allowed;
-  }
-
-
+.next-button-hidden {
+  display: none;
 }
-
 
 .time {
- color: #91785d;
+  color: #91785d;
   font-size: 24px;
   font-family: "Poppins";
   font-weight: 400;
-  margin-top: 56px;
+  margin-top: 18px;
 }
 .hurry {
-  color: var(--bright-pink);
+  color: var(--brigt-pink);
   font-size: 24px;
   font-family: "Poppins";
-  margin-top: 56px;
+  margin-top: 18px;
 }
 
-.score-status {
-  margin-top: 24px;
-  font-family: "Poppins";
-  font-size: 36px;
-  color: var(--greenlight);
-  font-weight: 500px;
-  
-   height: 20px;
-}
 
-.score-status-low {
-   margin-top: 24px;
-   font-family: "Poppins";
-  font-size: 36px;
-   color: #a54657;
-   
-  
-}
-.score-status-high {
-  margin-top: 24px;
-  font-family: "Poppins";
-  font-size: 36px;
-  color: var(--greenlight);
-  
-}
 
 .final-text {
   font-size: 48px;
   color: #91785d;
   font-family: "Pacifico";
+  margin-top: 48px;
 }
 .final-score {
   font-size: 48px;
   color: #91785d;
 }
+
+@keyframes blow-up {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(2);
+    color: var(--brown);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .final-score-number {
   font-size: 48px;
   color: #a7cdbd;
   font-family: "Poppins";
   border-color: #91785d;
   border-style: dotted;
-  
+
   border-width: 20px;
   margin-top: 24px;
   padding: 20px;
@@ -260,45 +253,74 @@ opacity: 0.5;
   text-align: center;
   line-height: 48px;
   border-radius: 50%;
-   box-sizing: border-box;
-   height: 200px;
-   width: 200px;
-   margin-left: auto; 
-   margin-right: auto;
+  box-sizing: border-box;
+  height: 200px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: blow-up 1000ms ease-in-out;
+}
+
+.cake-div {
+  margin-top: 24px;
 }
 
 .cake-svg {
   fill: var(--brown);
   height: 240px;
   width: 240px;
-  
 
   &:hover {
-    fill: #a54657;
+    fill: var(--greenlight);
   }
 }
 
 .play-again-button {
- 
   background-color: var(--blue);
   box-shadow: var(--standard-shadow);
   text-decoration: none;
   border-radius: 30px;
-  width: 100px;
+  width: 350px;
+  height: 70px;
   padding: 8px;
   border: 4px;
   font-size: 18px;
-  color: rgb(33, 33, 33);
-  font-weight: 500;
+  color: var(--brown);
+  font-weight: 700;
   margin-top: 40px;
-  
 
   &:hover {
-    background-color: var(--beige);
-    color: var(--brown);
+    background-color: var(--brown);
+    color: var(--greenlight);
   }
   &:active {
     background-color: transparent;
     color: white;
   }
+}
+
+.page-footer {
+  font-size: xx-small;
+  color: var(--brown);
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.page-footer-mail {
+  & a {
+    color: var(--green-box-color5);
+    font-family: "Poppins";
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      color: var(--brigt-pink);
+    }
+  }
+}
+
+/* RESPONSIVITET */
+/*  Mobile Device/Smaller screen  */
+@media (max-width: 600px) {
 }
