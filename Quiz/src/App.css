@@ -13,16 +13,17 @@
   scroll-behavior: smooth;
 }
 :root {
-  --beige: rgb(221, 187, 166);
+  --beige: #fdecd8;
+  --green: #b1b695;
+  --lightpurple: #a690a4;
+  --purple: #56445d;
+  --eggplant: #5e4b56;
 
-  --pink: #e5c1bd;
-  --brigt-pink: #a54657;
+  --black: rgb(33, 33, 33);
   --white: rgb(236, 226, 208);
-  --green: #869d7a;
 
-  --greenlight: #bbe1c3;
-  --blue: #a7cdbd;
-  --brown: #91785d;
+  --pink: #fdecd8;
+  --brigt-pink: #a54657;
 
   --rightanswer: #a0af84;
   --wronganswer: #ff7477;
@@ -34,13 +35,13 @@
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.background-image {
-  /* background-image: ; */
-}
-
 body {
-  background-color: var(--green);
-  font-family: var(--standard-font);
+  background-image: url("./thespacepicture.jpg");
+  background-color: #95bf74;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
 }
 
 .container {
@@ -49,38 +50,74 @@ body {
   margin: 0 auto;
 }
 
+.game-box {
+  background-color: var(--green);
+  opacity: 97%;
+  margin-top: 12px;
+  border-radius: 2%;
+  border-style: outset;
+  border-color: var(--green);
+  color: var(--black);
+  box-shadow: var(--standard-shadow);
+  height: 1200px;
+  position: relative;
+}
+
 h1 {
-  color: var(--greenlight);
-  font-weight: bolder;
-  font-family: "Poppins";
+  margin-top: 12px;
+  color: var(--beige);
   font-weight: normal;
+  font-family: "Poppins";
 }
 
 .play-text {
   margin-top: 12px;
-  color: var(--brown);
+  color: var(--purple);
   font-weight: 600;
   font-size: 60px;
-
+  font-family: "Poppins";
   &:hover {
     color: var(--beige);
   }
 }
-.question {
+
+.border-lets-play {
+  margin-top: 12px;
+  border-style: dotted;
+  border-width: 12px;
+  border-radius: 42%;
+  padding: 36px;
+  line-height: 48px;
+  border-radius: 50%;
+  height: 220px;
+  width: 226px;
+  margin-left: auto;
+  margin-right: auto;
+  border-color: var(--purple);
+  animation: blow-up 1000ms ease-in-out;
+}
+
+.question-container {
   margin-top: 20px;
-  color: var(--brown);
+  color: var(--purple);
   font-family: "Pacifico";
   font-weight: normal;
+  height: 168px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.question {
   font-weight: 400;
   font-size: 48px;
-  height: 160px;
 }
 
 .optionslist {
   list-style: none;
   font-size: 24px;
   margin-bottom: 2px;
-  color: var(--greenlight);
+  color: var(--lightpurple);
   font-family: "Poppins";
   text-decoration: none;
   font-weight: 400;
@@ -94,22 +131,22 @@ h1 {
 }
 
 .option-button {
-  background-color: #91785d;
+  background-color: var(--lightpurple);
   box-shadow: var(--standard-shadow);
   text-decoration: none;
   font-family: "Poppins";
   border-radius: 18px;
   width: 500px;
   padding: 12px;
-  border: 4px;
+  border: 6px;
   font-size: 18px;
   color: rgb(33, 33, 33);
   margin-top: 40px;
   margin-bottom: 8px;
 
   &:hover {
-    background-color: #bbe1c3;
-    color: var(--brown);
+    background-color: var(--beige);
+    color: var(--eggplant);
   }
   &:active {
     background-color: transparent;
@@ -119,10 +156,13 @@ h1 {
 
 .correct-answer {
   background-color: #95bf74;
-  border: var(--greenlight);
+  border: lightgreen;
   border-style: dotted;
+border-width: 6px;
   border-radius: 50px;
-  
+  font-weight: 400;
+  color: var(--black);
+
   &:hover {
     background-color: #95bf74;
     color: rgb(33, 33, 33);
@@ -138,18 +178,19 @@ h1 {
   }
 }
 
-
 .feedback {
+  height: 42px;
   margin-top: 24px;
   font-family: "Poppins";
   font-size: 28px;
+  color: var(--purple);
 }
 
 .score-status {
   margin-top: 24px;
   font-family: "Poppins";
   font-size: 36px;
-  color: var(--greenlight);
+  color: var(--lightpurple);
   font-weight: 500px;
 
   height: 20px;
@@ -165,27 +206,27 @@ h1 {
   margin-top: 24px;
   font-family: "Poppins";
   font-size: 36px;
-  color: var(--greenlight);
+  color: var(--lightpurple);
 }
 
 .next-button {
   font-family: "Poppins";
-  background-color: var(--brown);
+  background-color: var(--purple);
   box-shadow: var(--standard-shadow);
   text-decoration: none;
   border-radius: 30px;
-  width: 140px;
-  padding: 8px;
+  width: 240px;
+  padding: 32px;
   border: 4px;
 
   font-size: 18px;
-  color: rgb(33, 33, 33);
+  color: var(--lightpurple);
   font-weight: 500;
   margin-top: 20px;
 
   &:hover {
-    background-color: #bbe1c3;
-    color: var(--brown);
+    background-color: var(--beige);
+    color: var(--eggplant);
   }
   &:active {
     background-color: transparent;
@@ -202,26 +243,28 @@ h1 {
   font-size: 24px;
   font-family: "Poppins";
   font-weight: 400;
-  margin-top: 18px;
+  margin-top: 48px;
 }
 .hurry {
   color: var(--brigt-pink);
   font-size: 24px;
   font-family: "Poppins";
-  margin-top: 18px;
+  margin-top: 48px;
 }
 
-
+.progress-bar {
+  color: var(--purple);
+}
 
 .final-text {
   font-size: 48px;
-  color: #91785d;
+  color: var(--purple);
   font-family: "Pacifico";
   margin-top: 48px;
 }
 .final-score {
   font-size: 48px;
-  color: #91785d;
+  color: var(--lightpurple);
 }
 
 @keyframes blow-up {
@@ -231,7 +274,7 @@ h1 {
 
   50% {
     transform: scale(2);
-    color: var(--brown);
+    color: var(--eggplant);
   }
 
   100% {
@@ -241,9 +284,9 @@ h1 {
 
 .final-score-number {
   font-size: 48px;
-  color: #a7cdbd;
+  color: var(--lightpurple);
   font-family: "Poppins";
-  border-color: #91785d;
+  border-color: var(--beige);
   border-style: dotted;
 
   border-width: 20px;
@@ -266,17 +309,17 @@ h1 {
 }
 
 .cake-svg {
-  fill: var(--brown);
+  fill: var(--eggplant);
   height: 240px;
   width: 240px;
 
   &:hover {
-    fill: var(--greenlight);
+    fill: var(--lightpurple);
   }
 }
 
 .play-again-button {
-  background-color: var(--blue);
+  background-color: var(--purple);
   box-shadow: var(--standard-shadow);
   text-decoration: none;
   border-radius: 30px;
@@ -285,13 +328,13 @@ h1 {
   padding: 8px;
   border: 4px;
   font-size: 18px;
-  color: var(--brown);
+  color: var(--lightpurple);
   font-weight: 700;
   margin-top: 40px;
 
   &:hover {
-    background-color: var(--brown);
-    color: var(--greenlight);
+    background-color: var(--eggplant);
+    color: var(--beige);
   }
   &:active {
     background-color: transparent;
@@ -300,11 +343,13 @@ h1 {
 }
 
 .page-footer {
-  font-size: xx-small;
-  color: var(--brown);
+  color: var(--eggplant);
   display: flex;
   justify-content: space-between;
-  padding: 8px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 12px;
 }
 
 .page-footer-mail {
