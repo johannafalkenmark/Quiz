@@ -4,13 +4,6 @@ import { useEffect, useState } from "react";
 
 // useEffect( funktionSomKörs, listaAttLyssnaEfterSomInnehållerVärdenSomKanÄndras   );
 
-/*
-
-1. Visa inte next innan personen har svarat (check)
-2. När personen har svarat så pausas timern eller sätts till 0 (check)
-3. Man måste själv gå vidare till nästa fråga. (check)
-4. Om man inte hinner svara så skjuter vi mot rättningsfunktionen men slungar inte vidare till nästa fråga.
-*/
 
 const timePerQuestion = 10;
 
@@ -33,6 +26,7 @@ const Game = () => {
   //State för att visa när en fråga är/inte är besvarad.
   const [selectedAnswer, setSelectedAnswer] = useState("");
 
+  //State för att sätta id på timeout(för att kunna pausa den)
   const [timeoutId, setTimeoutId] = useState(0);
 
   //TIMER
@@ -51,11 +45,6 @@ const Game = () => {
     }
   }, [timeLeft]);
 
-  //    useEffect(() => {
-
-  // if
-
-  //    })
 
   //HÄMTA FRÅGORNA FRÅN FIL VIA FETCH:
   const getQuestions = () => {
