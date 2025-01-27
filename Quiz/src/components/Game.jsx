@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
+import Footer from "./Footer";
 
 // const [namnPåVariabel, denEndaFunktionSomKanÄndrapåVariabel ] = useState(  initialaVärdetPåVariabeln  )
 
 // useEffect( funktionSomKörs, listaAttLyssnaEfterSomInnehållerVärdenSomKanÄndras   );
 
-
-const timePerQuestion = 10;
+const timePerQuestion = 5;
 
 const Game = () => {
   //State för att hämta frågor och svar. Börjar som tom array.
@@ -45,7 +45,6 @@ const Game = () => {
     }
   }, [timeLeft]);
 
-
   //HÄMTA FRÅGORNA FRÅN FIL VIA FETCH:
   const getQuestions = () => {
     fetch("Questions.json")
@@ -63,7 +62,7 @@ const Game = () => {
 
   useEffect(() => {
     getQuestions();
-    // En tom array betyder kör den bara en gång per livscykel:
+    // En tom array innebär att den kör den bara en gång per livscykel:
   }, []);
 
   //Variabel som innehåller json filens array och viss arrayindex. Så att endast en fråga i taget kan visas:
@@ -74,8 +73,10 @@ const Game = () => {
   }
 
   //Stämmer av arrayindex mot längden på arrayen i jsonfilen.
+  //När frågorna är slut:
   if (questionIndex >= quizData.length - 1) {
-    //visar poängen när spelet är klart/arrayen gåtts igenom:
+    clearTimeout(timeoutId);
+    //visar poängen och spela om knapp när spelet är klart/arrayen gåtts igenom:
     return (
       <div className="final-text">
         Thank you for playing!
@@ -116,20 +117,21 @@ const Game = () => {
     setQuestionIndex(questionIndex + 1);
   };
 
-  //Stämmer av svaret:
+  //Stämmer av svaret när man valt alternativ:
   const checkAnswer = (selectedOption) => {
+    //Pausar timern:
     clearTimeout(timeoutId);
 
     if (selectedOption === currentItem.answer) {
       setScore(score + 1);
       setFeedback("Correct 😀");
-      //EV TA BORT DENNA setTimeLeftNextQuestion(4);
     } else if (selectedOption === null) {
-      setFeedback("Time is up");
-      setSelectedAnswer("WRONG ANSWER");
+      setFeedback("You ran out of time 🐌");
+      setSelectedAnswer("No time left");
+      setScore(score - 1);
     } else {
       setScore(score - 1);
-      setFeedback("Sorry - not the right answer. 😓");
+      setFeedback("Sorry - not the right answer 😓");
     }
   };
 
@@ -151,9 +153,12 @@ const Game = () => {
 
   return (
     <>
-      <div className="play-text">Lets play!</div>
-
-      <div className="question">{currentItem.question}</div>
+      <div className="border-lets-play">
+        <div className="play-text">Lets play!</div>
+      </div>
+      <div className="question-container">
+        <h2 className="question"> {currentItem.question} </h2>
+      </div>
 
       <ul className="optionslist">
         {currentItem.options.map((option, index) => (
@@ -188,8 +193,9 @@ const Game = () => {
       >
         {score} p
       </div>
-      {/* Om tiden är mindre än fyra sätts klassnamnet hurry annars time-fallbackvärde */}
+      {/* Om tiden är mindre än fyra sätts klassnamnet hurry annars är time fallbackvärdet */}
       <h3 className={timeLeft < 4 ? "hurry" : "time"}>{timeLeft}</h3>
+
       <button //Kan ej gå vidare utan angett svar. Eget klassnamn om val ej är gjort för effekt på knappen.
         className={`next-button ${
           selectedAnswer === "" ? "next-button-hidden" : ""
@@ -201,6 +207,20 @@ const Game = () => {
       >
         Next
       </button>
+      {/* <div className="progress-bar">
+        <progress value={questionIndex} />
+        <progress value={questionIndex} />
+        <progress value={questionIndex} />
+        <progress value={questionIndex} />
+        <progress value={questionIndex} />
+        <progress value={questionIndex} />
+        <progress value={questionIndex} />
+        <progress value={questionIndex} />
+        <progress value={questionIndex} />
+        <progress value={questionIndex} />
+      </div> */}
+
+      <Footer />
     </>
   );
 };
