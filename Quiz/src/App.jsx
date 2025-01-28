@@ -1,8 +1,6 @@
-import { useState } from "react";
 import "./App.css";
 import Game from "./components/Game";
 import CookieConsent from "react-cookie-consent";
-
 
 function App() {
   return (
@@ -11,7 +9,6 @@ function App() {
       <div className="game-box">
         <h1>Quiz</h1>
         <Game />
-
       </div>
     </div>
   );

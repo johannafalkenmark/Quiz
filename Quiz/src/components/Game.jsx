@@ -45,79 +45,26 @@ const Game = () => {
       }, 1000);
       setTimeoutId(myTimeoutId);
     }
-    
   }, [timeLeft]);
 
-  //HÄMTA FRÅGORNA FRÅN FIL VIA FETCH:
-  const getQuestions = () => {
-    fetch("Questions.json")
-      .then((response) => {
-        console.log("resolved", response);
-        return response.json();
-      })
-      .then((data) => {
-        setQuizData(data); // Quizdata blir data här
-      })
-      .catch((err) => {
-        console.log("rejected", err);
-      });
-  };
-
   useEffect(() => {
+    //HÄMTA FRÅGORNA FRÅN FIL VIA FETCH:
+    const getQuestions = () => {
+      fetch("Questions.json")
+        .then((response) => {
+          console.log("resolved", response);
+          return response.json();
+        })
+        .then((data) => {
+          setQuizData(data); // Quizdata blir data här
+        })
+        .catch((err) => {
+          console.log("rejected", err);
+        });
+    };
     getQuestions();
     // En tom array innebär att den kör den bara en gång per livscykel:
   }, []);
-
-  //Variabel som innehåller json filens array och viss arrayindex. Så att endast en fråga i taget kan visas:
-  const currentItem = quizData[questionIndex];
-  //så att den inte körs innan spelet dragit igång:
-  if (!currentItem) {
-    return null;
-  }
-
-  //Stämmer av arrayindex mot längden på arrayen i jsonfilen.
-  //När frågorna är slut:
-  if (questionIndex >= quizData.length - 1) {
-    clearTimeout(timeoutId);
-    //visar poängen och spela om knapp när spelet är klart/arrayen gåtts igenom:
-    return (
-      <div className="final-text">
-        Thank you for playing!
-        <div className="final-score">
-          Your final score is <p className="final-score-number">{score}</p>
-        </div>
-        <div className="summary-container">
-          <ul className="summary-list">
-            {summaryList.map((item, index) => (
-              <li key={index}>
-                <p>Fråga {index + 1}</p>
-                <p className={item.selectedOption === item.correctAnswer ? "summary-rightanswer" : "summary-wronganswer"}>
-                  Du svarade {item.selectedOption}
-                </p>
-                <p>Rätt svar var {item.correctAnswer}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="play-again-button-div">
-          <button
-            className="play-again-button"
-
-            //Återställer värden om man vill spela om:
-            onClick={() => {
-              setTimeLeft(9);
-              setQuestionIndex(0);
-              setScore(0);
-              setFeedback("");
-              setSummaryList([]);
-            }}
-          >
-            Play again
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   const goToNextQuestion = () => {
     setSelectedAnswer("");
@@ -166,6 +113,62 @@ const Game = () => {
 
     return "option-button";
   };
+
+  //Variabel som innehåller json filens array och viss arrayindex. Så att endast en fråga i taget kan visas:
+  const currentItem = quizData[questionIndex];
+  //så att den inte körs innan spelet dragit igång:
+  if (!currentItem) {
+    return null;
+  }
+
+  //Stämmer av arrayindex mot längden på arrayen i jsonfilen.
+  //När frågorna är slut:
+  if (questionIndex >= quizData.length - 1) {
+    clearTimeout(timeoutId);
+    //visar poängen och spela om knapp när spelet är klart/arrayen gåtts igenom:
+    return (
+      <div className="final-text">
+        Thank you for playing!
+        <div className="final-score">
+          Your final score is <p className="final-score-number">{score}</p>
+        </div>
+        <div className="summary-container">
+          <ul className="summary-list">
+            {summaryList.map((item, index) => (
+              <li key={index}>
+                <p>Fråga {index + 1}</p>
+                <p
+                  className={
+                    item.selectedOption === item.correctAnswer
+                      ? "summary-rightanswer"
+                      : "summary-wronganswer"
+                  }
+                >
+                  Du svarade {item.selectedOption}
+                </p>
+                <p>Rätt svar var {item.correctAnswer}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="play-again-button-div">
+          <button
+            className="play-again-button"
+            //Återställer värden om man vill spela om:
+            onClick={() => {
+              setTimeLeft(9);
+              setQuestionIndex(0);
+              setScore(0);
+              setFeedback("");
+              setSummaryList([]);
+            }}
+          >
+            Play again
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
