@@ -45,6 +45,7 @@ const Game = () => {
       }, 1000);
       setTimeoutId(myTimeoutId);
     }
+    
   }, [timeLeft]);
 
   //HÄMTA FRÅGORNA FRÅN FIL VIA FETCH:
@@ -104,10 +105,11 @@ const Game = () => {
 
             //Återställer värden om man vill spela om:
             onClick={() => {
-              setTimeLeft(timePerQuestion);
+              setTimeLeft(9);
               setQuestionIndex(0);
               setScore(0);
               setFeedback("");
+              setSummaryList([]);
             }}
           >
             Play again
@@ -130,7 +132,6 @@ const Game = () => {
       summaryList.concat({
         selectedOption,
         correctAnswer: currentItem.answer,
-        isCorrect: selectedOption === currentItem.answer,
       })
     );
 
